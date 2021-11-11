@@ -8,17 +8,20 @@
 
 // Hello, dad!
 
-void setup() {
+void setup()
+{
 	modelInit();
 }
 
-void loop() {
+void loop()
+{
 	modelUpdate();
 
 	display.clearDisplay();
 	display.setCursor(0, 0);
 
-	switch (VIEW) {
+	switch (VIEW)
+	{
 	case 0:
 		ViewHome::loop();
 		break;
