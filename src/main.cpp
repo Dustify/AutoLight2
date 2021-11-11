@@ -1,3 +1,5 @@
+#include "Adafruit_I2CDevice.h"
+
 #include "model.h"
 #include "viewHome.h"
 #include "viewMenu.h"
