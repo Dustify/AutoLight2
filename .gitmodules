@@ -10,3 +10,6 @@
 [submodule "lib/Rtc"]
 	path = lib/Rtc
 	url = git@github.com:Makuna/Rtc.git
+[submodule "lib/TimeLord"]
+	path = lib/TimeLord
+	url = git@github.com:probonopd/TimeLord.git
