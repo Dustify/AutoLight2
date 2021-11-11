@@ -10,11 +10,15 @@
             "includePath": [
                 "/workspaces/AutoLight2/include",
                 "/workspaces/AutoLight2/src",
+                "/workspaces/AutoLight2/lib/Rtc/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "/workspaces/AutoLight2/lib/Adafruit_SSD1306",
+                "/workspaces/AutoLight2/lib/Adafruit-GFX-Library",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/variants/standard",
+                "/workspaces/AutoLight2/lib/Adafruit_BusIO",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 ""
@@ -24,11 +28,15 @@
                 "path": [
                     "/workspaces/AutoLight2/include",
                     "/workspaces/AutoLight2/src",
+                    "/workspaces/AutoLight2/lib/Rtc/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
-                    "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "/workspaces/AutoLight2/lib/Adafruit_SSD1306",
+                    "/workspaces/AutoLight2/lib/Adafruit-GFX-Library",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "/workspaces/AutoLight2/lib/Adafruit_BusIO",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     ""
