@@ -60,7 +60,8 @@ float OFF_TIME;
 bool STATE;
 bool OVERRIDE;
 
-void modelInit() {
+void modelInit()
+{
 	pinMode(PIN_LEFT, INPUT_PULLUP);
 	pinMode(PIN_SELECT, INPUT_PULLUP);
 	pinMode(PIN_RIGHT, INPUT_PULLUP);
@@ -81,57 +82,69 @@ void modelInit() {
 	OFF_MINUTE = EEPROM.read(1);
 }
 
-void printWithLeading(uint16_t value) {
-	if (value < 10) {
+void printWithLeading(uint16_t value)
+{
+	if (value < 10)
+	{
 		display.print(0);
 	}
 
 	display.print(value);
 }
 
-uint8_t leftPressed() {
-  if (STATE_LEFT == LOW && STATE_LEFT_CHANGED) {
-    STATE_LEFT_CHANGED = 0;
-    return 1;
-  }
+uint8_t leftPressed()
+{
+	if (STATE_LEFT == LOW && STATE_LEFT_CHANGED)
+	{
+		STATE_LEFT_CHANGED = 0;
+		return 1;
+	}
 
-  return 0;
+	return 0;
 }
 
-uint8_t selectPressed() {
-  if (STATE_SELECT == LOW && STATE_SELECT_CHANGED) {
-    STATE_SELECT_CHANGED = 0;
-    return 1;
-  }
+uint8_t selectPressed()
+{
+	if (STATE_SELECT == LOW && STATE_SELECT_CHANGED)
+	{
+		STATE_SELECT_CHANGED = 0;
+		return 1;
+	}
 
-  return 0;
+	return 0;
 }
 
-uint8_t rightPressed() {
-  if (STATE_RIGHT == LOW && STATE_RIGHT_CHANGED) {
-    STATE_RIGHT_CHANGED = 0;
-    return 1;
-  }
+uint8_t rightPressed()
+{
+	if (STATE_RIGHT == LOW && STATE_RIGHT_CHANGED)
+	{
+		STATE_RIGHT_CHANGED = 0;
+		return 1;
+	}
 
-  return 0;
+	return 0;
 }
 
-void modelUpdate() {
+void modelUpdate()
+{
 	uint8_t STATE_LEFT_NEW = digitalRead(PIN_LEFT);
 	uint8_t STATE_SELECT_NEW = digitalRead(PIN_SELECT);
 	uint8_t STATE_RIGHT_NEW = digitalRead(PIN_RIGHT);
 
-  if (STATE_LEFT_NEW != STATE_LEFT) {
-    STATE_LEFT_CHANGED = 1;
-  }
+	if (STATE_LEFT_NEW != STATE_LEFT)
+	{
+		STATE_LEFT_CHANGED = 1;
+	}
 
-  if (STATE_SELECT_NEW != STATE_SELECT) {
-    STATE_SELECT_CHANGED = 1;
-  }
+	if (STATE_SELECT_NEW != STATE_SELECT)
+	{
+		STATE_SELECT_CHANGED = 1;
+	}
 
-  if (STATE_RIGHT_NEW != STATE_RIGHT) {
-    STATE_RIGHT_CHANGED = 1;
-  }
+	if (STATE_RIGHT_NEW != STATE_RIGHT)
+	{
+		STATE_RIGHT_CHANGED = 1;
+	}
 
 	STATE_LEFT = STATE_LEFT_NEW;
 	STATE_SELECT = STATE_SELECT_NEW;
@@ -149,7 +162,7 @@ void modelUpdate() {
 
 	TIME = HOUR + ((float)MINUTE / 60);
 
-	byte nowArray[] = { SECOND, MINUTE, HOUR, DAY, MONTH, YEAR_SHORT };
+	byte nowArray[] = {SECOND, MINUTE, HOUR, DAY, MONTH, YEAR_SHORT};
 
 	timeLord.SunRise(nowArray);
 	SR_MINUTE = nowArray[1];
@@ -163,7 +176,8 @@ void modelUpdate() {
 
 	SUNSET = SS_HOUR + ((float)SS_MINUTE / 60);
 
-	if (TIME > SUNSET) {
+	if (TIME > SUNSET)
+	{
 		nowArray[3]++;
 
 		timeLord.SunSet(nowArray);
@@ -176,17 +190,24 @@ void modelUpdate() {
 	SUNRISE_NEXT = TIME < SUNRISE || TIME > SUNSET ? 1 : 0;
 
 	RtcTemperature temperature = rtc.GetTemperature();
-	TEMPERATURE = temperature.AsFloat();
 
-	if (!TEMP_IN_CELCIUS) {
-		TEMPERATURE = TEMPERATURE * 1.8 + 32;
+	if (TEMP_IN_CELCIUS)
+	{
+		TEMPERATURE = temperature.AsFloatDegC();
+	}
+	else
+	{
+		TEMPERATURE = temperature.AsFloatDegF();
 	}
 
 	OFF_TIME = OFF_HOUR + ((float)OFF_MINUTE / 60);
 
-	if (OFF_TIME > SUNSET) {
+	if (OFF_TIME > SUNSET)
+	{
 		STATE = TIME >= SUNSET && TIME < OFF_TIME;
-	} else {
+	}
+	else
+	{
 		STATE = TIME < SUNSET && TIME < OFF_TIME;
 	}
 

@@ -10,6 +10,7 @@
             "includePath": [
                 "/workspaces/AutoLight2/include",
                 "/workspaces/AutoLight2/src",
+                "/workspaces/AutoLight2/lib/TimeLord",
                 "/workspaces/AutoLight2/lib/Rtc/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                 "/workspaces/AutoLight2/lib/Adafruit_SSD1306",
@@ -28,6 +29,7 @@
                 "path": [
                     "/workspaces/AutoLight2/include",
                     "/workspaces/AutoLight2/src",
+                    "/workspaces/AutoLight2/lib/TimeLord",
                     "/workspaces/AutoLight2/lib/Rtc/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
                     "/workspaces/AutoLight2/lib/Adafruit_SSD1306",
