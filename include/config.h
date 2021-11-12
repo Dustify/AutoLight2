@@ -1,10 +1,11 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
-#define PIN_OLED_MOSI  9
-#define PIN_OLED_CLK   10
-#define PIN_OLED_DC    11
-#define PIN_OLED_RESET 8
+#define PIN_DISP_MOSI   9
+#define PIN_DISP_CLK    10
+#define PIN_DISP_DC     11
+#define PIN_DISP_RESET  8
+#define PIN_DISP_CS     -1
 
 #define PIN_LEFT    2
 #define PIN_SELECT  3

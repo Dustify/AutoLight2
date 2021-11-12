@@ -17,7 +17,8 @@ void loop()
 {
 	modelUpdate();
 
-	display.clearDisplay();
+	// display.clearDisplay();
+	display.fillScreen(ST77XX_BLACK);
 	display.setCursor(0, 0);
 
 	switch (VIEW)
@@ -39,5 +40,5 @@ void loop()
 		break;
 	}
 
-	display.display();
+	// display.display();
 }

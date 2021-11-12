@@ -5,16 +5,24 @@
 #include <Wire.h>
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
+#include <Adafruit_ST7735.h>
 #include <RtcDS3231.h>
 #include <TimeLord.h>
 #include <EEPROM.h>
 
-Adafruit_SSD1306 display(
-	PIN_OLED_MOSI,
-	PIN_OLED_CLK,
-	PIN_OLED_DC,
-	PIN_OLED_RESET,
-	-1);
+// Adafruit_SSD1306 display(
+// 	PIN_DISP_MOSI,
+// 	PIN_DISP_CLK,
+// 	PIN_DISP_DC,
+// 	PIN_DISP_RESET,
+// 	PIN_DISP_CS);
+
+Adafruit_ST7735 display(
+	PIN_DISP_CS,
+	PIN_DISP_DC,
+	PIN_DISP_MOSI,
+	PIN_DISP_CLK,
+	PIN_DISP_RESET);
 
 RtcDS3231<TwoWire> rtc(Wire);
 
@@ -68,7 +76,8 @@ void modelInit()
 
 	pinMode(PIN_OUTPUT, OUTPUT);
 
-	display.begin(SSD1306_SWITCHCAPVCC);
+	// display.begin(SSD1306_SWITCHCAPVCC);
+	display.initR(INITR_MINI160x80);
 	display.setTextColor(WHITE);
 
 	rtc.Begin();

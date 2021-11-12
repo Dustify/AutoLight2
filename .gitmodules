@@ -13,3 +13,6 @@
 [submodule "lib/TimeLord"]
 	path = lib/TimeLord
 	url = git@github.com:probonopd/TimeLord.git
+[submodule "lib/Adafruit-ST7735-Library"]
+	path = lib/Adafruit-ST7735-Library
+	url = git@github.com:adafruit/Adafruit-ST7735-Library.git
