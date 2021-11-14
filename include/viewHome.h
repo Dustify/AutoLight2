@@ -26,8 +26,8 @@ static void loop() {
 
 	if (timedOut) {
 		if (!selectPressed()) {
-			// display.clearDisplay();
-			display.fillScreen(ST77XX_BLACK);
+			display.clearDisplay();
+			// display.fillScreen(ST77XX_BLACK);
 			return;
 		} else {
 			timeoutStart = now;

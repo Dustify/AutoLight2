@@ -20,7 +20,6 @@
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/cores/arduino",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/variants/standard",
-                "/workspaces/AutoLight2/lib/Adafruit-ST7735-Library",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                 "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                 ""
@@ -40,7 +39,6 @@
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/cores/arduino",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/variants/standard",
-                    "/workspaces/AutoLight2/lib/Adafruit-ST7735-Library",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/HID/src",
                     "/home/vscode/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
                     ""
