@@ -4,7 +4,7 @@
 #include "model.h"
 #include "viewSetTime.h"
 #include "viewSetDate.h"
-#include "viewSetOffTime.h"
+#include "viewSetDimTime.h"
 
 class ViewMenu {
 public:
@@ -52,7 +52,7 @@ static void loop() {
 
 	printMenuOption(0, "Time");
 	printMenuOption(1, "Date");
-	printMenuOption(2, "Off Time");
+	printMenuOption(2, "Dim time");
 	printMenuOption(3, "Exit");
 
 	if (leftPressed()) {
@@ -70,7 +70,7 @@ static void loop() {
 			VIEW = 3;
 			break;
 		case 2:
-			ViewSetOffTime::init();
+			ViewSetDimTime::init();
 			VIEW = 4;
 			break;
 		case 3:

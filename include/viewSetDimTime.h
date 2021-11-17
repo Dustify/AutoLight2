@@ -3,7 +3,7 @@
 
 #include "model.h"
 
-class ViewSetOffTime {
+class ViewSetDimTime {
 public:
 
 static uint8_t selectedIndex;
@@ -13,8 +13,8 @@ static int8_t minute;
 
 static void init() {
 	selectedIndex = 0;
-	hour = OFF_HOUR;
-	minute = OFF_MINUTE;
+	hour = DIM_HOUR;
+	minute = DIM_MINUTE;
 }
 
 static void fixValues() {
@@ -36,7 +36,7 @@ static void fixValues() {
 }
 
 static void loop() {
-	display.println("Set off");
+	display.println("Set dim");
 	display.println("time");
 
 	printWithLeading(hour);
@@ -82,8 +82,8 @@ static void loop() {
 	fixValues();
 
 	if (selectedIndex > 1) {
-		OFF_HOUR = hour;
-		OFF_MINUTE = minute;
+		DIM_HOUR = hour;
+		DIM_MINUTE = minute;
 		EEPROM.write(0, hour);
 		EEPROM.write(1, minute);
 
@@ -92,9 +92,9 @@ static void loop() {
 }
 };
 
-uint8_t ViewSetOffTime::selectedIndex;
+uint8_t ViewSetDimTime::selectedIndex;
 
-int8_t ViewSetOffTime::hour;
-int8_t ViewSetOffTime::minute;
+int8_t ViewSetDimTime::hour;
+int8_t ViewSetDimTime::minute;
 
 #endif

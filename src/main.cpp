@@ -4,7 +4,7 @@
 #include "viewHome.h"
 #include "viewMenu.h"
 #include "viewSetTime.h"
-#include "viewSetOffTime.h"
+#include "viewSetDimTime.h"
 
 // Hello, dad!
 
@@ -35,7 +35,7 @@ void loop()
 		ViewSetDate::loop();
 		break;
 	case 4:
-		ViewSetOffTime::loop();
+		ViewSetDimTime::loop();
 		break;
 	}
 
