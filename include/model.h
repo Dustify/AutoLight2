@@ -56,6 +56,8 @@ bool DIM_OVERRIDE;
 unsigned long LAST_TIMESTAMP = 0;
 unsigned long PIR_TIMER = 0;
 
+bool LAST_LOOP_WAS_DUSK_TO_DAWN = false;
+
 void modelInit()
 {
 	pinMode(PIN_LEFT, INPUT_PULLUP);
@@ -67,6 +69,7 @@ void modelInit()
 
 	pinMode(PIN_OUT_MAIN, OUTPUT);
 	pinMode(PIN_OUT_DIM, OUTPUT);
+	pinMode(PIN_OUT_DIM_INV, OUTPUT);
 
 	display.begin(SSD1306_SWITCHCAPVCC, 0x3c);
 
@@ -248,6 +251,15 @@ void modelUpdate()
 	bool MAIN_STATE_FINAL = MAIN_STATE;
 	bool DIM_STATE_FINAL = DIM_STATE;
 
+	// turn off dimmer ssr if during day
+
+	bool DAWN_TO_DUSK = TIME >= SUNRISE && TIME < SUNSET;
+
+	if (DAWN_TO_DUSK)
+	{
+		DIM_STATE_FINAL = true;
+	}
+
 	/// begin PIR handling
 	if (PIR_TIMER > 0)
 	{
@@ -271,8 +283,26 @@ void modelUpdate()
 	MAIN_STATE_FINAL = MAIN_STATE_FINAL && PIR_TIMER > 0;
 	/// end PIR handling
 
-	digitalWrite(PIN_OUT_MAIN, MAIN_OVERRIDE || MAIN_STATE_FINAL ? HIGH : LOW);
-	digitalWrite(PIN_OUT_DIM, DIM_OVERRIDE || DIM_STATE ? LOW : HIGH);
+	if (MAIN_OVERRIDE)
+	{
+		MAIN_STATE_FINAL = true;
+	}
+
+	if (DIM_OVERRIDE)
+	{
+		DIM_STATE_FINAL = false;
+	}
+
+	digitalWrite(PIN_OUT_MAIN, MAIN_STATE_FINAL ? HIGH : LOW);
+	digitalWrite(PIN_OUT_DIM, DIM_STATE_FINAL ? LOW : HIGH);
+	digitalWrite(PIN_OUT_DIM_INV, DIM_STATE_FINAL && (!DAWN_TO_DUSK || MAIN_STATE_FINAL) ? HIGH : LOW);
+
+	if (DAWN_TO_DUSK && LAST_LOOP_WAS_DUSK_TO_DAWN) {
+		MAIN_OVERRIDE = false;
+		DIM_OVERRIDE = false;
+	}
+
+	LAST_LOOP_WAS_DUSK_TO_DAWN = !DAWN_TO_DUSK;
 }
 
 #endif

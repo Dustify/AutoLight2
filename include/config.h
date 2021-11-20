@@ -8,6 +8,7 @@
 
 #define PIN_PIR     6
 
+#define PIN_OUT_DIM_INV 11
 #define PIN_OUT_MAIN 12
 #define PIN_OUT_DIM  13
 

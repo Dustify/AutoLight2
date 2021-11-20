@@ -29,6 +29,6 @@
 	"remoteUser": "vscode",
 
 	"runArgs": [
-		"--device", "/dev/ttyACM0"
+		"--device", "/dev/ttyUSB0"
 	]
 }
