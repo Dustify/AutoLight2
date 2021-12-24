@@ -283,21 +283,24 @@ void modelUpdate()
 	MAIN_STATE_FINAL = MAIN_STATE_FINAL && PIR_TIMER > 0;
 	/// end PIR handling
 
+	// begin override handling
 	if (MAIN_OVERRIDE)
 	{
-		MAIN_STATE_FINAL = true;
+		MAIN_STATE_FINAL = !MAIN_STATE_FINAL;
 	}
 
 	if (DIM_OVERRIDE)
 	{
-		DIM_STATE_FINAL = false;
+		DIM_STATE_FINAL = !DIM_STATE_FINAL;
 	}
+	//end override handling
 
 	digitalWrite(PIN_OUT_MAIN, MAIN_STATE_FINAL ? HIGH : LOW);
 	digitalWrite(PIN_OUT_DIM, DIM_STATE_FINAL ? LOW : HIGH);
 	digitalWrite(PIN_OUT_DIM_INV, DIM_STATE_FINAL && (!DAWN_TO_DUSK || MAIN_STATE_FINAL) ? HIGH : LOW);
 
-	if (DAWN_TO_DUSK && LAST_LOOP_WAS_DUSK_TO_DAWN) {
+	if (DAWN_TO_DUSK && LAST_LOOP_WAS_DUSK_TO_DAWN)
+	{
 		MAIN_OVERRIDE = false;
 		DIM_OVERRIDE = false;
 	}
